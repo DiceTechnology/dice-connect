@@ -1,4 +1,4 @@
-package com.imggaming.rnchromecast.session;
+package com.dicetechnology.dcchromecast.session;
 
 import android.net.Uri;
 import android.os.Handler;
@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.dicetechnology.dcchromecast.models.DCVideoStreamType;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableArray;
@@ -25,11 +26,10 @@ import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.images.WebImage;
-import com.imggaming.devicemanager.DeviceManagerSession;
-import com.imggaming.rnchromecast.models.RNGoogleCastEventNames;
-import com.imggaming.rnchromecast.models.RNGoogleCastPayloadNames;
-import com.imggaming.rnchromecast.models.RNVideoStreamType;
-import com.imggaming.rnchromecast.utils.EventEmitter;
+import com.dicetechnology.devicemanager.DeviceManagerSession;
+import com.dicetechnology.dcchromecast.models.DCGoogleCastEventNames;
+import com.dicetechnology.dcchromecast.models.DCGoogleCastPayloadNames;
+import com.dicetechnology.dcchromecast.utils.EventEmitter;
 
 import org.json.JSONObject;
 
@@ -37,16 +37,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RNGoogleCastSession implements DeviceManagerSession,
+public class DCGoogleCastSession implements DeviceManagerSession,
         RemoteMediaClient.ProgressListener, SessionManagerListener<Session> {
 
-    private static final String TAG = "RNGoogleCastSession";
+    private static final String TAG = "DCGoogleCastSession";
 
     private static final String CUSTOM_DATA_KEY_EVENT_INFO_SERIALISED = "eventInfoSerialized";
     private static final String CUSTOM_DATA_KEY_CHROMECAST_SESSION_SERIALIZED = "chromecastSessionSerialized";
 
     @Nullable
-    private static com.imggaming.rnchromecast.session.RNGoogleCastSession instance;
+    private static DCGoogleCastSession instance;
 
     private int mediaPlayerState = MediaStatus.PLAYER_STATE_UNKNOWN;
 
@@ -68,20 +68,20 @@ public class RNGoogleCastSession implements DeviceManagerSession,
                 switch (remoteMediaClient.getPlayerState()) {
                     case MediaStatus.PLAYER_STATE_UNKNOWN:
                         onProgressUpdated(0, 0);
-                        eventEmitter.sendEvent(RNGoogleCastEventNames.DCE_DEVICES_STATE, RNGoogleCastPayloadNames.VIDEO_ENDED);
+                        eventEmitter.sendEvent(DCGoogleCastEventNames.DCE_DEVICES_STATE, DCGoogleCastPayloadNames.VIDEO_ENDED);
                         break;
                     case MediaStatus.PLAYER_STATE_IDLE:
                         onProgressUpdated(0, 0);
-                        eventEmitter.sendEvent(RNGoogleCastEventNames.DCE_DEVICES_STATE, RNGoogleCastPayloadNames.VIDEO_ENDED);
+                        eventEmitter.sendEvent(DCGoogleCastEventNames.DCE_DEVICES_STATE, DCGoogleCastPayloadNames.VIDEO_ENDED);
                         break;
                     case MediaStatus.PLAYER_STATE_BUFFERING:
-                        eventEmitter.sendEvent(RNGoogleCastEventNames.DCE_DEVICES_STATE, RNGoogleCastPayloadNames.VIDEO_BUFFERING);
+                        eventEmitter.sendEvent(DCGoogleCastEventNames.DCE_DEVICES_STATE, DCGoogleCastPayloadNames.VIDEO_BUFFERING);
                         break;
                     case MediaStatus.PLAYER_STATE_PAUSED:
-                        eventEmitter.sendEvent(RNGoogleCastEventNames.DCE_DEVICES_STATE, RNGoogleCastPayloadNames.VIDEO_PAUSED);
+                        eventEmitter.sendEvent(DCGoogleCastEventNames.DCE_DEVICES_STATE, DCGoogleCastPayloadNames.VIDEO_PAUSED);
                         break;
                     case MediaStatus.PLAYER_STATE_PLAYING:
-                        eventEmitter.sendEvent(RNGoogleCastEventNames.DCE_DEVICES_STATE, RNGoogleCastPayloadNames.VIDEO_PLAYING);
+                        eventEmitter.sendEvent(DCGoogleCastEventNames.DCE_DEVICES_STATE, DCGoogleCastPayloadNames.VIDEO_PLAYING);
                         break;
                 }
                 mediaPlayerState = remoteMediaClient.getPlayerState();
@@ -91,11 +91,11 @@ public class RNGoogleCastSession implements DeviceManagerSession,
 
 
     @Nullable
-    public static com.imggaming.rnchromecast.session.RNGoogleCastSession getInstance() {
+    public static DCGoogleCastSession getInstance() {
         return instance;
     }
 
-    public RNGoogleCastSession(@NonNull SessionManager sessionManager,
+    public DCGoogleCastSession(@NonNull SessionManager sessionManager,
                                @NonNull EventEmitter eventEmitter) {
         this.sessionManager = sessionManager;
         this.eventEmitter = eventEmitter;
@@ -114,7 +114,7 @@ public class RNGoogleCastSession implements DeviceManagerSession,
     }
 
     @Override
-    public void start(final String url, final RNVideoStreamType videoStreamType, final String videoContentType, @Nullable final ReadableMap metadataMap) {
+    public void start(final String url, final DCVideoStreamType videoStreamType, final String videoContentType, @Nullable final ReadableMap metadataMap) {
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -145,7 +145,7 @@ public class RNGoogleCastSession implements DeviceManagerSession,
                 }
 
                 MediaInfo mediaInfo = new MediaInfo.Builder(url)
-                        .setStreamType(videoStreamType == RNVideoStreamType.LIVE ? MediaInfo.STREAM_TYPE_LIVE : MediaInfo.STREAM_TYPE_BUFFERED)
+                        .setStreamType(videoStreamType == DCVideoStreamType.LIVE ? MediaInfo.STREAM_TYPE_LIVE : MediaInfo.STREAM_TYPE_BUFFERED)
                         .setContentType(videoContentType)
                         .setMetadata(metadata)
                         .setCustomData(eventInfo)
@@ -157,17 +157,17 @@ public class RNGoogleCastSession implements DeviceManagerSession,
                         .setPlayPosition(playPosition)
                         .build();
                 if (remoteMediaClient != null) {
-                    remoteMediaClient.removeProgressListener(com.imggaming.rnchromecast.session.RNGoogleCastSession.this);
+                    remoteMediaClient.removeProgressListener(DCGoogleCastSession.this);
                     PendingResult<RemoteMediaClient.MediaChannelResult> result = remoteMediaClient.load(mediaInfo, mediaLoadOptions);
                     result.setResultCallback(new ResultCallback<RemoteMediaClient.MediaChannelResult>() {
                         @Override
                         public void onResult(@NonNull RemoteMediaClient.MediaChannelResult mediaChannelResult) {
                             Status status = mediaChannelResult.getStatus();
                             if (status.isSuccess()) {
-                                eventEmitter.sendEvent(RNGoogleCastEventNames.DCE_DEVICES_STATE, RNGoogleCastPayloadNames.VIDEO_STARTED);
-                                remoteMediaClient.addProgressListener(com.imggaming.rnchromecast.session.RNGoogleCastSession.this, 1000);
+                                eventEmitter.sendEvent(DCGoogleCastEventNames.DCE_DEVICES_STATE, DCGoogleCastPayloadNames.VIDEO_STARTED);
+                                remoteMediaClient.addProgressListener(DCGoogleCastSession.this, 1000);
                             } else {
-                                eventEmitter.sendEvent(RNGoogleCastEventNames.DCE_DEVICES_STATE, RNGoogleCastPayloadNames.VIDEO_FAILED);
+                                eventEmitter.sendEvent(DCGoogleCastEventNames.DCE_DEVICES_STATE, DCGoogleCastPayloadNames.VIDEO_FAILED);
                             }
                         }
                     });
@@ -245,8 +245,8 @@ public class RNGoogleCastSession implements DeviceManagerSession,
     public void requestQueuedItems() {
         if (remoteMediaClient != null) {
             // Since at the startup the progress listener would not exist, ensure it is registered
-            remoteMediaClient.removeProgressListener(com.imggaming.rnchromecast.session.RNGoogleCastSession.this);
-            remoteMediaClient.addProgressListener(com.imggaming.rnchromecast.session.RNGoogleCastSession.this, 1000);
+            remoteMediaClient.removeProgressListener(DCGoogleCastSession.this);
+            remoteMediaClient.addProgressListener(DCGoogleCastSession.this, 1000);
 
             WritableArray array = Arguments.createArray();
             if (remoteMediaClient.getCurrentItem() != null &&
@@ -271,7 +271,7 @@ public class RNGoogleCastSession implements DeviceManagerSession,
                     }
                 }
             }
-            eventEmitter.sendEvent(RNGoogleCastEventNames.DCE_SESSION_MANAGER_QUEUED_ITEMS, array);
+            eventEmitter.sendEvent(DCGoogleCastEventNames.DCE_SESSION_MANAGER_QUEUED_ITEMS, array);
         }
     }
 

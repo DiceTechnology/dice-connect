@@ -1,6 +1,6 @@
-package com.imggaming.rnchromecast.models;
+package com.dicetechnology.dcchromecast.models;
 
-public enum RNVideoStreamType {
+public enum DCVideoStreamType {
     VOD("VOD"),
     LIVE("LIVE");
 
@@ -9,7 +9,7 @@ public enum RNVideoStreamType {
     /**
      * @param text
      */
-    RNVideoStreamType(final String text) {
+    DCVideoStreamType(final String text) {
         this.text = text;
     }
 

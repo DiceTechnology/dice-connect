@@ -1,6 +1,6 @@
-package com.imggaming.rnchromecast.models;
+package com.dicetechnology.dcchromecast.models;
 
-public enum RNGoogleCastPayloadNames {
+public enum DCGoogleCastPayloadNames {
     NO_DEVICES_AVAILABLE("NO_DEVICES_AVAILABLE"),
     NOT_CONNECTED("NOT_CONNECTED"),
     CONNECTING("CONNECTING"),
@@ -17,7 +17,7 @@ public enum RNGoogleCastPayloadNames {
     /**
      * @param text
      */
-    RNGoogleCastPayloadNames(final String text) {
+    DCGoogleCastPayloadNames(final String text) {
         this.text = text;
     }
 

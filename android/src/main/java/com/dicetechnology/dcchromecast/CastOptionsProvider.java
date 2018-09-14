@@ -1,4 +1,4 @@
-package com.imggaming.rnchromecast;
+package com.dicetechnology.dcchromecast;
 
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package com.imggaming.rnchromecast.ui;
+package com.dicetechnology.dcchromecast.ui;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;

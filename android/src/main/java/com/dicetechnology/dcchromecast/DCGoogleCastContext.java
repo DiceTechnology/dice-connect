@@ -1,4 +1,4 @@
-package com.imggaming.rnchromecast;
+package com.dicetechnology.dcchromecast;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -17,10 +17,10 @@ import java.util.List;
  * {#link startCastStateDiscovery} and {#link stopCastStateDiscovery} need to be called
  * on the MainActivity's Resume/Pause lifecycles
  */
-public class RNGoogleCastContext {
+public class DCGoogleCastContext {
 
     @Nullable
-    private static com.imggaming.rnchromecast.RNGoogleCastContext instance;
+    private static DCGoogleCastContext instance;
 
     @NonNull
     private CastContext castContext;
@@ -37,20 +37,20 @@ public class RNGoogleCastContext {
         }
     };
 
-    private RNGoogleCastContext(Context context) {
+    private DCGoogleCastContext(Context context) {
         castContext = CastContext.getSharedInstance(context);
     }
 
     @NonNull
-    public static com.imggaming.rnchromecast.RNGoogleCastContext getInstance(Context context) {
+    public static DCGoogleCastContext getInstance(Context context) {
         if (instance == null) {
-            instance = new com.imggaming.rnchromecast.RNGoogleCastContext(context);
+            instance = new DCGoogleCastContext(context);
         }
         return instance;
     }
 
     @Nullable
-    public static com.imggaming.rnchromecast.RNGoogleCastContext getInstance() {
+    public static DCGoogleCastContext getInstance() {
         return instance;
     }
 
