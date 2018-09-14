@@ -2,6 +2,7 @@ package com.dicetechnology.dcchromecast;
 
 import android.content.Context;
 
+import com.google.android.gms.cast.CastMediaControlIntent;
 import com.google.android.gms.cast.framework.CastOptions;
 import com.google.android.gms.cast.framework.OptionsProvider;
 import com.google.android.gms.cast.framework.SessionProvider;
@@ -25,8 +26,12 @@ public class CastOptionsProvider implements OptionsProvider {
                 .setNotificationOptions(notificationOptions)
                 .build();
 
+        String appId = appContext.getString(R.string.cast_id);
+        if (appId == null || appId.length() == 0) {
+            appId = CastMediaControlIntent.DEFAULT_MEDIA_RECEIVER_APPLICATION_ID;
+        }
         CastOptions castOptions = new CastOptions.Builder()
-                .setReceiverApplicationId(appContext.getString(R.string.cast_id))
+                .setReceiverApplicationId(appId)
                 .setCastMediaOptions(mediaOptions)
                 .build();
         return castOptions;
