@@ -59,7 +59,7 @@ public class DCGoogleCastModule extends ReactContextBaseJavaModule implements Ev
 
     @Override
     public String getName() {
-        return "RNGoogleCast";
+        return "DCGoogleCast";
     }
 
     @ReactMethod
