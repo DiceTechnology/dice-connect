@@ -16,13 +16,19 @@ import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.google.android.exoplayer2.C;
 import com.google.android.gms.cast.framework.media.RemoteMediaClient;
 import com.reactlibrary.R;
 
 import java.util.Locale;
 
 public class GoogleCastProgressView extends FrameLayout implements RemoteMediaClient.ProgressListener {
+
+    /**
+     * Special constant representing an unset or unknown time or duration. Suitable for use in any
+     * time base.
+     */
+    public static final long TIME_UNSET = Long.MIN_VALUE + 1;
+
     private TextView currentTimeTextView;
     private TextView durationTextView;
     private AppCompatSeekBar progressBar;
@@ -52,7 +58,7 @@ public class GoogleCastProgressView extends FrameLayout implements RemoteMediaCl
         setMax((int) durationMs);
         setProgress((int) progressMs);
 
-        if (durationMs != C.TIME_UNSET && durationTextView != null) {
+        if (durationMs != TIME_UNSET && durationTextView != null) {
             double durationSecs = Math.floor(durationMs / 1000);
             int secs = (int) (durationSecs % 60);
             int mins = (int) ((durationSecs / 60) % 60);
@@ -67,7 +73,7 @@ public class GoogleCastProgressView extends FrameLayout implements RemoteMediaCl
             durationTextView.setText(durationString);
         }
 
-        if (progressMs != C.TIME_UNSET && currentTimeTextView != null) {
+        if (progressMs != TIME_UNSET && currentTimeTextView != null) {
             double progressSecs = Math.floor(progressMs / 1000);
             int secs = (int) (progressSecs % 60);
             int mins = (int) ((progressSecs / 60) % 60);
