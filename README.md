@@ -22,8 +22,8 @@
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNDiceConnectPackage;` to the imports at the top of the file
-  - Add `new RNDiceConnectPackage()` to the list returned by the `getPackages()` method
+  - Add `import com.dicetechnology.dcchromecast.DCGoogleCastPackage;` to the imports at the top of the file
+  - Add `new DCGoogleCastPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
   	include ':dice-connect'
@@ -33,6 +33,10 @@
   	```
       compile project(':dice-connect')
   	```
+4. Add the string resource containing the id of your cast receiver to resources
+      ```
+      <string name="cast_id" translatable="false">YOUR_CAST_RECEIVER_ID</string>
+      ```
 
 #### Windows
 [Read it! :D](https://github.com/ReactWindows/react-native)
