@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { View } from 'react-native';
+import VideoPlayer from './components/VideoPlayer';
 
 import { Controllers } from './components';
 
@@ -28,11 +29,12 @@ export default class App extends React.Component<{}, IState> {
     deviceType: 'Chromecast',
     isConnectedToDevice: true,
     isPlaying: true,
-  }
+  };
 
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <VideoPlayer source={{uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'}}/>
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
           <Controllers {...this.state}/>
         </View>
