@@ -4,19 +4,42 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "react": "16.5.0",
-    "react-native": "0.57.0"
+    "react-native": "0.57.0",
+    "react-native-svg": "^6.5.2",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-react": "3.5.1",
+    "dice-connect": "../"
   },
   "devDependencies": {
+    "@types/react": "^16.4.14",
+    "@types/react-native": "^0.56.18",
+    "@types/react-native-video": "2.0.6",
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
+    "lint-staged": "^7.2.2",
     "metro-react-native-babel-preset": "0.45.2",
-    "react-test-renderer": "16.5.0"
+    "react-native-device-info": "0.22.5",
+    "react-native-typescript-transformer": "^1.2.10",
+    "react-native-video": "3.2.1",
+    "react-test-renderer": "16.5.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --debug-check --print-width=100",
+      "eslint --fix"
+    ],
+    "*.ts*": [
+      "tslint --fix"
+    ]
   }
 }

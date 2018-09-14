@@ -2,7 +2,11 @@ package com.example;
 
 import android.app.Application;
 
+import com.dicetechnology.dcchromecast.DCGoogleCastContext;
+import com.dicetechnology.dcchromecast.DCGoogleCastPackage;
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
+import com.brentvatne.react.ReactVideoPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -21,8 +25,12 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+      DCGoogleCastContext.getInstance(getApplicationContext());
+      return Arrays.asList(
+          new MainReactPackage(),
+            new DCGoogleCastPackage(),
+          new SvgPackage(),
+          new ReactVideoPackage()
       );
     }
 

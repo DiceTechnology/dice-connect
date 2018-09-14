@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		051B1CEC214BB113001869B3 /* DCAirPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 051B1CEB214BB113001869B3 /* DCAirPlay.m */; };
 		051B1CEF214BB1D4001869B3 /* DCChromeCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B1CEE214BB1D4001869B3 /* DCChromeCast.swift */; };
+		051B1D49214BB722001869B3 /* DCAirPlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 051B1D48214BB722001869B3 /* DCAirPlayManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		051B1CEB214BB113001869B3 /* DCAirPlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAirPlay.m; sourceTree = "<group>"; };
 		051B1CED214BB1D4001869B3 /* RNDiceConnect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNDiceConnect-Bridging-Header.h"; sourceTree = "<group>"; };
 		051B1CEE214BB1D4001869B3 /* DCChromeCast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCChromeCast.swift; sourceTree = "<group>"; };
+		051B1D47214BB722001869B3 /* DCAirPlayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAirPlayManager.h; sourceTree = "<group>"; };
+		051B1D48214BB722001869B3 /* DCAirPlayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAirPlayManager.m; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libRNDiceConnect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNDiceConnect.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -47,6 +50,8 @@
 			children = (
 				051B1CEA214BB113001869B3 /* DCAirPlay.h */,
 				051B1CEB214BB113001869B3 /* DCAirPlay.m */,
+				051B1D47214BB722001869B3 /* DCAirPlayManager.h */,
+				051B1D48214BB722001869B3 /* DCAirPlayManager.m */,
 			);
 			path = AirPlay;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				051B1CEC214BB113001869B3 /* DCAirPlay.m in Sources */,
+				051B1D49214BB722001869B3 /* DCAirPlayManager.m in Sources */,
 				051B1CEF214BB1D4001869B3 /* DCChromeCast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

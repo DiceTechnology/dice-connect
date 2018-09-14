@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "skipLibCheck": true,
+    "jsx": "react-native",
+    "baseUrl": ".",
+    "module": "commonjs",
+    "types": ["jest", "react", "react-native"],
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "strict": true
+  },
+  "rules": {
+    "interface-name": false
+  },
+  "exclude": ["node_modules", "submodules/**/*"]
+}

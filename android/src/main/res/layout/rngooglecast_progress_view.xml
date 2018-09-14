@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/rnGoogleCastCurrentTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:paddingBottom="1dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="5dp"
+        android:text="00:00:00"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/rnGoogleCastProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingEnd="0dp"
+        android:paddingStart="0dp"
+        android:progress="20"
+        android:progressDrawable="@drawable/rngooglecast_progress_bar"
+        android:thumb="@drawable/rngooglecast_progress_thumb" />
+
+    <TextView
+        android:id="@+id/rnGoogleCastDurationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:paddingBottom="1dp"
+        android:paddingEnd="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="0dp"
+        android:paddingStart="5dp"
+        android:text="00:00:00"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+</LinearLayout>
