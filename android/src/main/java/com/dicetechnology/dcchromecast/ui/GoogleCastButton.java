@@ -1,4 +1,4 @@
-package com.imggaming.rnchromecast.ui;
+package com.dicetechnology.dcchromecast.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -28,7 +28,7 @@ public class GoogleCastButton extends SimpleViewManager<MediaRouteButton> {
     protected MediaRouteButton createViewInstance(ThemedReactContext reactContext) {
         context = reactContext;
         MediaRouteButton mediaRouteButton = new MediaRouteButton(reactContext);
-        com.imggaming.rnchromecast.ui.GoogleCastButton.setTintColor(reactContext, mediaRouteButton, "#FFFFFF");
+        com.dicetechnology.dcchromecast.ui.GoogleCastButton.setTintColor(reactContext, mediaRouteButton, "#FFFFFF");
         CastButtonFactory.setUpMediaRouteButton(reactContext, mediaRouteButton);
         return mediaRouteButton;
     }

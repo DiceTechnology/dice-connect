@@ -1,4 +1,4 @@
-package com.imggaming.rnchromecast.ui;
+package com.dicetechnology.dcchromecast.ui;
 
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
@@ -8,7 +8,7 @@ import android.widget.SeekBar;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.imggaming.rnchromecast.session.RNGoogleCastSession;
+import com.dicetechnology.dcchromecast.session.DCGoogleCastSession;
 
 public class GoogleCastProgressViewManager extends SimpleViewManager<GoogleCastProgressView> {
     public static final String REACT_CLASS = "GoogleCastProgressView";
@@ -29,7 +29,7 @@ public class GoogleCastProgressViewManager extends SimpleViewManager<GoogleCastP
     @Override
     protected GoogleCastProgressView createViewInstance(ThemedReactContext reactContext) {
         GoogleCastProgressView progressView = new GoogleCastProgressView(reactContext);
-        final RNGoogleCastSession session = RNGoogleCastSession.getInstance();
+        final DCGoogleCastSession session = DCGoogleCastSession.getInstance();
         if (session != null) {
             session.registerProgressListener(progressView);
             // By default the thumb is visible

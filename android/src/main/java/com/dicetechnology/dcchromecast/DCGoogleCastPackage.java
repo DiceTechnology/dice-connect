@@ -1,4 +1,4 @@
-package com.imggaming.rnchromecast;
+package com.dicetechnology.dcchromecast;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
@@ -8,13 +8,13 @@ import com.facebook.react.uimanager.ViewManager;
 import java.util.Arrays;
 import java.util.List;
 
-public class RNGoogleCastPackage implements ReactPackage {
+public class DCGoogleCastPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        RNGoogleCastContext castContext = RNGoogleCastContext.getInstance();
+        DCGoogleCastContext castContext = DCGoogleCastContext.getInstance();
         if (castContext == null)
-            throw new NullPointerException("RNGoogleCastContext needs to be initialised using the RNGoogleCastContext.getInstance(Context context) method");
-        return Arrays.<NativeModule>asList(new RNGoogleCastModule(reactContext, castContext));
+            throw new NullPointerException("DCGoogleCastContext needs to be initialised using the DCGoogleCastContext.getInstance(Context context) method");
+        return Arrays.<NativeModule>asList(new DCGoogleCastModule(reactContext, castContext));
     }
 
     @Override

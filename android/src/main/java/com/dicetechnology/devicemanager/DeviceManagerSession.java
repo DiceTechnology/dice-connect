@@ -1,12 +1,12 @@
-package com.imggaming.devicemanager;
+package com.dicetechnology.devicemanager;
 
 import android.support.annotation.Nullable;
 
 import com.facebook.react.bridge.ReadableMap;
-import com.imggaming.rnchromecast.models.RNVideoStreamType;
+import com.dicetechnology.dcchromecast.models.DCVideoStreamType;
 
 public interface DeviceManagerSession {
-    void start(final String url, final RNVideoStreamType videoStreamType, final String videoContentType, @Nullable final ReadableMap metadataMap);
+    void start(final String url, final DCVideoStreamType videoStreamType, final String videoContentType, @Nullable final ReadableMap metadataMap);
 
     void play();
 

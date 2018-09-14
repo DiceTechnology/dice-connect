@@ -1,4 +1,4 @@
-package com.imggaming.rnchromecast.ui;
+package com.dicetechnology.dcchromecast.ui;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

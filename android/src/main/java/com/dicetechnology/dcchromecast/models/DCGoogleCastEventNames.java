@@ -1,6 +1,6 @@
-package com.imggaming.rnchromecast.models;
+package com.dicetechnology.dcchromecast.models;
 
-public enum RNGoogleCastEventNames {
+public enum DCGoogleCastEventNames {
     DCE_DEVICES_STATE("DCE_DEVICES_STATE"),
     DCE_SESSION_MANAGER_QUEUED_ITEMS("DCE_SESSION_MANAGER_QUEUED_ITEMS");
 
@@ -9,7 +9,7 @@ public enum RNGoogleCastEventNames {
     /**
      * @param text
      */
-    RNGoogleCastEventNames(final String text) {
+    DCGoogleCastEventNames(final String text) {
         this.text = text;
     }
 
