@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { IVideo } from '../../App';
 import { TouchableIcon } from '../Icon/TouchableIcon';
@@ -6,7 +6,7 @@ import { TouchableIcon } from '../Icon/TouchableIcon';
 interface IProps {
   deviceType: string;
   isPlaying: boolean;
-  onExpand: () => void;
+  onExpand(): void;
   video: IVideo;
 }
 
@@ -23,26 +23,26 @@ export class MiniController extends React.Component<IProps> {
     const controlIconName = isPlaying ? 'pause' : 'play';
 
     return (
-      <View style={styles.container}>
-        
-        <View style={styles.progressBar}/>
-        
+      <View style={ styles.container }>
+
+        <View style={ styles.progressBar }/>
+
         <View
-            style={styles.banner}
-            // onPress={onExpand}
+          style={ styles.banner }
+          // onPress={onExpand}
         >
 
-          <View style={styles.textContainer}>
-            { title ? <Text style={styles.title}>{title}</Text> : null }
-            <Text style={styles.connectedText}>Connected to {deviceType}</Text>
+          <View style={ styles.textContainer }>
+            { title ? <Text style={ styles.title }>{ title }</Text> : null }
+            <Text style={ styles.connectedText }>Connected to { deviceType }</Text>
           </View>
 
-          <View style={[styles.iconContainer, styles.playPauseIcon]}>
-            <TouchableIcon name={controlIconName} onPress={() => console.log('play/pause')}/> 
+          <View style={ [ styles.iconContainer, styles.playPauseIcon ] }>
+            <TouchableIcon name={ controlIconName } onPress={ () => console.log('play/pause') }/>
           </View>
-          {/*<View style={[styles.iconContainer, styles.expandIcon]}>*/}
-            {/*<TouchableIcon name={'arrowUp'} onPress={onExpand}/> */}
-          {/*</View>*/}
+          { /*<View style={[styles.iconContainer, styles.expandIcon]}>*/ }
+          { /*<TouchableIcon name={'arrowUp'} onPress={onExpand}/> */ }
+          { /*</View>*/ }
 
         </View>
 
