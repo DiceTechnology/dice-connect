@@ -25,9 +25,6 @@ public class CastOptionsProvider implements OptionsProvider {
                 .setNotificationOptions(notificationOptions)
                 .build();
 
-
-        // TODO: use BuildConfig.CHROMECAST_ID - At the moment the guest mode on the receiver app for
-        // Android is having issues which is not allowing "Nearby devices" to he discovered
         CastOptions castOptions = new CastOptions.Builder()
                 .setReceiverApplicationId(appContext.getString(R.string.cast_id))
                 .setCastMediaOptions(mediaOptions)

@@ -33,10 +33,6 @@ repositories {
 dependencies {
     compile 'com.facebook.react:react-native:+'
 
-    compile('com.google.android.exoplayer:exoplayer:2.8.2') {
-        exclude group: 'com.android.support'
-    }
-
     compile 'com.google.android.gms:play-services-cast-framework:16.0.2'
 }
   
