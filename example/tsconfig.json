@@ -10,7 +10,9 @@
     "types": ["jest", "react", "react-native"],
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "strict": true
   },
   "rules": {
     "interface-name": false
