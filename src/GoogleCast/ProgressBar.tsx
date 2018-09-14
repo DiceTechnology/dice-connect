@@ -1,7 +1,5 @@
-import * as React from 'react';
+import React from 'react';
 import { requireNativeComponent, ViewStyle, StyleProp } from 'react-native';
-
-import { RealmContext } from 'DiceMobile.Contexts/RealmContext';
 
 interface IProps {
   progressColorHex?: string;
@@ -19,18 +17,12 @@ const GoogleCastProgressBar: React.ComponentClass<IProps> = requireNativeCompone
 export class ProgressBar extends React.Component<IProps> {
   render() {
     const { style, ...rest } = this.props;
-    return (
-      <RealmContext.Consumer>
-        {({ theme }) => (
-          <GoogleCastProgressBar
-            progressTimeHidden={false}
-            progressThumbHidden={false}
-            progressColorHex={theme.colors.primary}
-            style={[{ height: 44, width: '100%' }, style]}
-            {...rest}
-          />
-        )}
-      </RealmContext.Consumer>
-    );
+    return <GoogleCastProgressBar
+      progressTimeHidden={false}
+      progressThumbHidden={false}
+      progressColorHex={'#00ff00'}
+      style={[{ height: 44, width: '100%' }, style]}
+      {...rest}
+    />;
   }
 }

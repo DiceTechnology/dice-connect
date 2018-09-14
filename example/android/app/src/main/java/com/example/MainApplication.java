@@ -2,6 +2,8 @@ package com.example;
 
 import android.app.Application;
 
+import com.dicetechnology.dcchromecast.DCGoogleCastContext;
+import com.dicetechnology.dcchromecast.DCGoogleCastPackage;
 import com.facebook.react.ReactApplication;
 import com.horcrux.svg.SvgPackage;
 import com.brentvatne.react.ReactVideoPackage;
@@ -23,8 +25,10 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
+      DCGoogleCastContext.getInstance(getApplicationContext());
+      return Arrays.asList(
           new MainReactPackage(),
+            new DCGoogleCastPackage(),
           new SvgPackage(),
           new ReactVideoPackage()
       );

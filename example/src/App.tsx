@@ -1,9 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import VideoPlayer from './components/VideoPlayer';
 
-import { Controllers } from './components';
-import { TopBar } from './components/TopBar/TopBar';
+// import { Controllers } from './components';
 
 export interface IVideo {
   manifestUrl?: string;
@@ -36,6 +35,7 @@ export default class App extends React.Component<{}, IState> {
     const {video: {manifestUrl}} = this.state;
     return (
       <View style={ {flex: 1, justifyContent: 'space-between'} }>
+        <Text style={{ color: 'black'}}>Hey</Text>
         <VideoPlayer source={ {uri: manifestUrl} }/>
         {/*<Controllers { ...this.state }/>*/}
       </View>
