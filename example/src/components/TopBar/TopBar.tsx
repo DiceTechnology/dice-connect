@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform, View } from 'react-native';
 import { AirPlayButton } from 'dice-connect/src/airPlay';
+import { CastButton } from 'dice-connect/src/GoogleCast';
 
 import styles from './styles';
 
@@ -24,7 +25,7 @@ export class TopBar extends React.PureComponent<ITopBarProps, {}> {
 
     return (
       <View style={ styles.container }>
-        { showAirplay ? <AirPlayButton /> : null }
+        { showAirplay ? <AirPlayButton /> : <CastButton /> }
       </View>
     );
   }
