@@ -1,16 +1,37 @@
 
-# dice-connect
+<p align="center">
+  <img src="./assets/dice.png"/>
+</p>
 
-## Getting started
+# Dice Connect &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/DiceTechnology/dice-connect/pulls)
+
+Welcome to **Dice Connect**! A library to uniformly allow react native modules to be connected to Chromecast, Airplay and other devices.
+
+
+- [Getting Started](#getting-started)
+- [Projects](#projects)
+    - [Automatic installation](#automatic-installation)
+    - [Manual installation](#manual-installation)
+- [Usage](#usage)
+    - [Airplay](#airplay)
+    - [Chromecast](#chromecast)
+- [Features To Be Added](#features-to-be-added)
+<p align="center">
+  <img src="./assets/iphone.png"/>
+</p>
+
+
+
+
+## Getting Started
 
 `$ npm install dice-connect --save`
 
-### Mostly automatic installation
+### Automatic installation
 
 `$ react-native link dice-connect`
 
 ### Manual installation
-
 
 #### iOS
 
@@ -38,20 +59,110 @@
       <string name="cast_id" translatable="false">YOUR_CAST_RECEIVER_ID</string>
       ```
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNDiceConnect.sln` in `node_modules/dice-connect/windows/RNDiceConnect.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Dice.Connect.RNDiceConnect;` to the usings at the top of the file
-  - Add `new RNDiceConnectPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
-
 ## Usage
-```javascript
-import RNDiceConnect from 'dice-connect';
 
-// TODO: What to do with the module?
-RNDiceConnect;
+### Airplay
+
+#### Button
+
+Note: The AirPlay button will not show whilst using the simulator. 
+
+```javascript
+import { AirPlayButton } from 'dice-connect'
+
+<AirPlayButton style={{ height: 30, wifdth: 30 }} />
 ```
-  
+
+#### Methods 
+
+```javascript
+ AirPlay.startScan();
+
+ AirPlay.disconnect();
+```
+
+#### Listeners
+
+```javascript
+import { AirPlayEmitter, AirPlayEvents } from 'dice-connect'
+
+this.deviceAvailableListener = AirPlayEmitter.addListener(AirPlayEvents.DEVICE_AVAILABLE, devices => this.setState({
+      airPlayAvailable: devices.airplay,
+})); --> returns a boolean
+
+this.deviceConnectedListener = AirPlayEmitter.addListener(AirPlayEvents.DEVICE_CONNECTED, devices => this.setState({
+      airPlayConnected: devices.airplay,
+})); --> returns a boolean
+
+
+// Remove Listeners in componentWillUnmount
+this.deviceAvailableListener.remove();
+this.deviceConnectedListener.remove()
+```
+
+### Chromecast
+
+#### Cast Button
+
+See [Google Cast Button Documentation](https://developers.google.com/cast/docs/design_checklist/cast-button#sender-cast-icon-available) for more information
+
+This component is the native google cast button and therefore will only appear when their are chromecast 
+##### Props
+
+| Name |  Type |
+| --- | --- |
+| **style** | ViewStyle |
+
+#### Example
+
+```javascript
+import { CastButton } from 'dice-connect'
+
+<CastButton style={{ height: 60, width: 60 }} />
+```
+#### ProgressBar
+
+##### Example
+
+```javascript
+import { ProgressBar } from 'dice-connect'
+
+<ProgressBar
+  progressTimeHidden={false}
+  progressThumbHidden={false}
+  progressColorHex={'#000000'}
+  style={{ height: 44, width: '100%' }}
+/>
+```
+
+##### Props
+
+| Name |  Type |
+| --- | --- |
+| **progressColorHex** | string |
+| **progressMax** | number |
+| **progressCurrent** | number |
+| **progressTimeHidden** | boolean |
+| **progressThumbHidden** | boolean |
+| **style** | ViewStyle |
+
+
+
+#### Methods 
+
+| Name |  Arguments | ReturnType
+| --- | --- | --- |
+| **stop** | - | - |
+| **start** |`(url: string, streamType: StreamType, contentType: contentType, metadata?: MetaData)` | - |
+| **seek** | `(toMilliseconds: number, relative: boolean)` | - |
+| **play** | - | - | 
+| **pause** | - | - |
+| **disconnect** | - |
+| **getState** | - | DeviceScannerState
+
+
+## Features to be Added
+- [ ] iOS Support on ChromeCast
+- [ ] Android Examples on ChromeCast
+- [ ] Add Support for connectiing to Tizen TVs
+- [ ] Add Support for connecting to WebOS Tvs
