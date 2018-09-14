@@ -7,6 +7,6 @@
 //
 
 
-class DCChromeCast: RCTEventEmitter {
-
-}
+//class DCChromeCast: RCTEventEmitter {
+//
+//}

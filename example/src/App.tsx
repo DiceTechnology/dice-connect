@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import VideoPlayer from './components/VideoPlayer';
 
 import { Controllers } from './components';
+import { TopBar } from './components/TopBar/TopBar';
 
 export interface IVideo {
   manifestUrl?: string;
@@ -36,7 +37,7 @@ export default class App extends React.Component<{}, IState> {
     return (
       <View style={ {flex: 1, justifyContent: 'space-between'} }>
         <VideoPlayer source={ {uri: manifestUrl} }/>
-        <Controllers { ...this.state }/>
+        {/*<Controllers { ...this.state }/>*/}
       </View>
     );
   }
