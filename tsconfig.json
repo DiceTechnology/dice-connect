@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "moduleResolution": "node",
+    "jsx": "react-native",
+    "removeComments": true,
+    "module": "commonjs",
+    "baseUrl": "src/",
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "outDir": "lib/",
+    "declaration": true,
+    "sourceMap": true,
+  }
+}
