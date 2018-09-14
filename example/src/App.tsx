@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { View } from 'react-native';
+import VideoPlayer from './components/VideoPlayer';
 
 import { Controllers } from './components';
 
@@ -20,7 +21,7 @@ interface IState {
 export default class App extends React.Component<{}, IState> {
   state = {
     video: {
-      manifestUrl: '',
+      manifestUrl: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
       title: 'Big Buck Bunny',
       duration: 36000,
       thumbnailUrl: '',
@@ -28,14 +29,14 @@ export default class App extends React.Component<{}, IState> {
     deviceType: 'Chromecast',
     isConnectedToDevice: true,
     isPlaying: true,
-  }
+  };
 
   render() {
+    const {video: {manifestUrl}} = this.state;
     return (
-      <View style={{ flex: 1 }}>
-        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-          <Controllers {...this.state}/>
-        </View>
+      <View style={ {flex: 1, justifyContent: 'space-between'} }>
+        <VideoPlayer source={ {uri: manifestUrl} }/>
+        <Controllers { ...this.state }/>
       </View>
     );
   }
