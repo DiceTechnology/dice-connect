@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import Video, { OnLoadData, VideoProperties } from 'react-native-video';
 
 import styles from './styles';
+import { TopBar } from '../TopBar/TopBar';
 
 export class VideoPlayer extends React.Component<VideoProperties> {
 
@@ -20,7 +21,7 @@ export class VideoPlayer extends React.Component<VideoProperties> {
     resizeMode: 'contain',
     duration: 0.0,
     currentTime: 0.0,
-    controls: true,
+    controls: false,
     paused: false,
     ignoreSilentSwitch: 'obey',
     isBuffering: false,
@@ -43,6 +44,7 @@ export class VideoPlayer extends React.Component<VideoProperties> {
 
     return (
       <View style={ styles.container }>
+        <TopBar airPlayAvailable={true}/>
         <Video
           style={ styles.fullScreen }
           source={ {uri} }
