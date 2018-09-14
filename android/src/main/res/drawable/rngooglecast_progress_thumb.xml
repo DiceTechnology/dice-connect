@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    android:thickness="4dp"
+    android:tint="#00a0ff"
+    android:useLevel="false">
+    <corners android:radius="9dp" />
+    <solid android:color="#00a0ff" />
+    <size
+        android:width="@dimen/rnchromecast_progress_thumb_size"
+        android:height="@dimen/rnchromecast_progress_thumb_size" />
+</shape>
