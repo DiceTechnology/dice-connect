@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { View } from 'react-native';
 
 import { MiniController } from './MiniController';
@@ -17,11 +17,11 @@ interface IState {
 }
 
 export class Controllers extends React.Component<IProps, IState> {
-  state = { expanded: false }
+  state = { expanded: false };
 
   setController = () => {
-    this.setState(prevState => ({expanded: !prevState.expanded}))
-  }
+    this.setState(prevState => ({ expanded: !prevState.expanded }))
+  };
 
   render() {
     const { expanded } = this.state;
@@ -29,12 +29,12 @@ export class Controllers extends React.Component<IProps, IState> {
 
     if (!isConnectedToDevice) return null;
     return (
-      <View> 
-        {expanded ? (
-          <ExpandedController {...this.props} onExpand={this.setController}/>
+      <View>
+        { expanded ? (
+          <ExpandedController { ...this.props } onExpand={ this.setController }/>
         ) : (
-          <MiniController {...this.props} onExpand={this.setController} />
-        )}
+          <MiniController { ...this.props } onExpand={ this.setController }/>
+        ) }
       </View>
     )
   }
