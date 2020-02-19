@@ -5,6 +5,8 @@
 
 # Dice Connect &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/DiceTechnology/dice-connect/pulls)
 
+# DEPRECATED
+
 Welcome to **Dice Connect**! A library to uniformly allow react native modules to be connected to Chromecast, Airplay and other devices.
 
 
